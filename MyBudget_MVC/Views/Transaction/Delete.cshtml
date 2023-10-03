@@ -1,0 +1,68 @@
+﻿@model TransactionVM
+
+<div class="card shadow border-0 my-4 bg-secondary">
+    <div class="card-header bg-primary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Update Transaction</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <form method="post" class="row">
+            <div class="row ">
+                <div class="col-12">
+                    <div class="p-3 ">
+                        <input asp-for="Transaction.Id" hidden />
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Transaction.Title" disabled class="form-control border-0 shadow" />
+                            <label asp-for="Transaction.Title" class="ms-2 text-dark"></label>
+                            <span asp-validation-for="Transaction.Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="@Model.Transaction.Category.Name" disabled class="form-control border-0 py-0 shadow" />
+                            <label asp-for="@Model.Transaction.Category.Name" class="ms-2 text-dark"></label>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Transaction.Amount" disabled class="form-control border-0 shadow" />
+                            <label asp-for="Transaction.Amount" class="ms-2 text-dark"></label>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <textarea asp-for="Transaction.Description" rows="4" disabled class="form-control border-0 shadow"></textarea>
+                            <label asp-for="Transaction.Description" class="ms-2 text-dark"></label>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <textarea asp-for="Transaction.ShortDescription" disabled rows="4" class="form-control border-0 shadow"></textarea>
+                            <label asp-for="Transaction.ShortDescription" class="ms-2 text-dark"></label>
+                        </div>
+
+                        <div class="form-floating py-2 col-12">
+                            <input asp-for="Transaction.DateTime" type="date" disabled class="form-control border-0 shadow" />
+                            <label asp-for="Transaction.DateTime" class="ms-2 text-dark"></label>
+                        </div>
+
+                        <div class="row pt-2">
+                            <div class="col-6 col-md-3">
+                                <button type="submit" class="btn btn-primary form-control bg-danger" asp-controller="Transaction" asp-action="Delete">Delete Transaction</button>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <a asp-controller="Transaction" asp-action="Index" class="btn btn-outline-primary border form-control">&larr; Go Back</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
